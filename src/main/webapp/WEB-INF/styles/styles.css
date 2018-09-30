@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+}
+header,footer,.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-size: 100% 100%;
+    background-image: url("https://picjumbo.com/wp-content/uploads/black-and-white-morning-foggy-forest_free_stock_photos_picjumbo_HNCK0599.jpg");
+}
+header, footer{
+    width: 100%;
+    height: 50px;
+}
+header {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: gray;
+    font-size: 20px;
+    font-family: "Comic Sans MS";
+    font-weight: 500;
+}
+footer{
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.main{
+    width: 100%;
+    flex-direction: column;
+    height: calc(100% - 100px);
+}
+.input-date{
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 10px;
+    border: aqua 1px solid;
+}
+.button-date{
+    border-radius: 5px;
+    border-color: aqua;
+    background-color: white;
+    padding: 5px;
+}
+.days-before-birthday{
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+}
+.dropdown-main{
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    display: flex;
+    flex-direction: row;
+}
+.lang_en,.lang_ru{
+    display: flex;
+    padding: 5px;
+    cursor: pointer;
+}
+.lang-submit{
+    display: flex;
+    padding: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-left: 5px;
+    background-color: rgba(0, 255, 127, 0.5);
+    cursor: pointer;
+    border: unset;
+    box-shadow: unset;
+    border-radius: 5px;
+}
