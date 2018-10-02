@@ -8,14 +8,21 @@ public class BirthdayResolverTest {
     public void timeBeforeBirthdayAndYearsOldGoodRequest() {
         BirthdayResolver birthdayResolver = new BirthdayResolver("12/07/2017");
         String actual = birthdayResolver.timeBeforeBirthdayAndYearsOld();
-        Assert.assertEquals("You are 1 years old, 284 days before birthday", actual);
+        Assert.assertNotEquals("Invalid Date", actual);
     }
 
     @Test
     public void timeBeforeBirthdayAndYearsOldGoodRequestOneNumber() {
-        BirthdayResolver birthdayResolver = new BirthdayResolver("2/7/80");
+        BirthdayResolver birthdayResolver = new BirthdayResolver("2/7/17");
         String actual = birthdayResolver.timeBeforeBirthdayAndYearsOld();
-        Assert.assertEquals("You are 38 years old, 274 days before birthday", actual);
+        Assert.assertNotEquals("Invalid Date", actual);
+    }
+
+    @Test
+    public void timeBeforeBirthdayAndYearsOldGoodRequestOtherDelimiters() {
+        BirthdayResolver birthdayResolver = new BirthdayResolver("2-7-17");
+        String actual = birthdayResolver.timeBeforeBirthdayAndYearsOld();
+        Assert.assertNotEquals("Invalid Date", actual);
     }
 
     @Test

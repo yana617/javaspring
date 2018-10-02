@@ -11,7 +11,7 @@ public class BirthdayResolver {
     public BirthdayResolver(String date) {
         this.date = date;
     }
-    public boolean isRight(String[]dateParts){
+    private boolean isRight(String[]dateParts){
         int year = Integer.parseInt(dateParts[2]);
         if(!dateParts[0].matches("^((0?[1-9])|(([12][0-9])|(3[01])))$")){
             return false;
@@ -45,10 +45,14 @@ public class BirthdayResolver {
             }
         }
         String nextBirthday = day+"."+month;
-        if(Integer.parseInt(month)<10) nextBirthday+=".2019";
-        else nextBirthday+=".2018";
         String birthDay = day+"."+month+"."+year;
         try {
+            String isBirthday2019 = day+"."+month+".2018";
+            if(df.parse(isBirthday2019).getTime()-dateNow.getTime()<0){
+                nextBirthday+=".2019";
+            } else {
+                nextBirthday+=".2018";
+            }
             Date dateOfNextBirthday = df.parse(nextBirthday);
             Date dateOfBirth = df.parse(birthDay);
             long startTime = dateNow.getTime();
@@ -59,7 +63,7 @@ public class BirthdayResolver {
             long yearsOldTime = startTime - endTime2;
             long yearsOld = yearsOldTime / (1000 * 60 * 60 * 24);
             yearsOld /= 365;
-            return "You are "+String.valueOf(yearsOld)+" years old, "+String.valueOf(daysBeforeBirthday)+" days before birthday";
+            return "You are "+yearsOld+" years old, "+daysBeforeBirthday+" days before birthday";
         } catch(Exception ex){
             System.out.println(ex.getMessage());
             return "Invalid Date";
@@ -71,7 +75,7 @@ public class BirthdayResolver {
                 return getNumberOfDays(date.split("/"));
             }
         }
-        if(Pattern.matches("^\\d{1,2}[-]\\d{1,2}[-]\\d{2}$", date)){
+        if(Pattern.matches("^\\d{1,2}[-]\\d{1,2}[-]((\\d{2})|(\\d{4}))$", date)){
             if(isRight(date.split("-"))){
                 return getNumberOfDays(date.split("-"));
             }
